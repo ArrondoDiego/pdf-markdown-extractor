@@ -21,8 +21,7 @@ A Python-based toolkit for extracting text from large PDF documents (such as nov
 │   ├── files/           # Extracted markdown chunks (chunk_001.md, etc.)
 │   └── summaries/       # Structured markdown summaries
 ├── requirements.txt     # Python dependencies
-├── .gitignore           # Git ignore rules
-└── LICENSE              # MIT License
+└── .gitignore           # Git ignore rules
 ```
 
 ## Usage
@@ -47,7 +46,3 @@ A Python-based toolkit for extracting text from large PDF documents (such as nov
    python scripts/generate_index.py
    ```
 6. Open `index.html` in your web browser to explore the processed book and summaries.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
