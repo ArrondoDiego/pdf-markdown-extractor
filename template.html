@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!-- BOOK_TITLE --></title>
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --text: #e0e0e0;
+            --accent: #c9a84c;
+            --accent2: #8b6914;
+            --border: #333;
+            --card: #1a1a1a;
+        }
+        html.light {
+            --bg: #f5f2eb;
+            --text: #1a1a1a;
+            --accent: #8b6914;
+            --accent2: #5a4410;
+            --border: #ccc;
+            --card: #fff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--accent);
+        }
+        h1 { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; }
+        .author { font-size: 1.2rem; color: var(--accent2); font-style: italic; }
+
+        .toc {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+        .toc h2 { color: var(--accent); font-size: 1.4rem; margin-bottom: 20px; text-align: center; letter-spacing: 1px; }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 8px;
+        }
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: block;
+            font-size: 0.95rem;
+        }
+        .toc a:hover { background: var(--accent); color: var(--bg); }
+        .toc a .n { color: var(--accent); font-weight: bold; margin-right: 8px; }
+        .toc a:hover .n { color: var(--bg); }
+
+        .chunk { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .chunk:last-of-type { border-bottom: none; }
+        h2.chunk-title { color: var(--accent); font-size: 1.5rem; margin-bottom: 20px; font-weight: normal; letter-spacing: 1px; }
+        .chunk p { margin-bottom: 15px; text-align: justify; }
+
+        .back-top { text-align: center; margin: 30px 0; }
+        .back-top a { color: var(--accent); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; }
+        .back-top a:hover { color: #e6c55a; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border);
+            color: var(--accent2);
+            font-size: 0.85rem;
+        }
+
+        .chunk.detail { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .chunk.detail:last-of-type { border-bottom: none; }
+        .chunk.detail h3.chunk-title { color: var(--accent); font-size: 1.4rem; margin-bottom: 20px; font-weight: normal; letter-spacing: 1px; }
+        .chunk.detail .chunk-subtitle { color: var(--accent2); font-size: 1.1rem; margin-bottom: 15px; font-style: italic; }
+        .chunk.detail p { margin-bottom: 15px; text-align: justify; }
+        .chunk.detail ul { padding-left: 20px; margin-bottom: 15px; }
+        .chunk.detail li { margin-bottom: 10px; padding-left: 5px; }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+        }
+        .theme-toggle:hover { border-color: var(--accent); }
+        .switch {
+            position: relative;
+            width: 36px;
+            height: 20px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: var(--accent2);
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+        .slider::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 2px;
+            bottom: 2px;
+            background: var(--bg);
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        .switch input:checked + .slider { background: var(--accent); }
+        .switch input:checked + .slider::before { transform: translateX(16px); }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <h1><!-- BOOK_TITLE --></h1>
+        <p class="author"><!-- BOOK_AUTHOR --></p>
+        <p style="font-weight: 800; font-style: italic; font-size: 0.9rem; color: #a0a0a0; margin-top: 10px;">Disclaimer: This summary and extraction is automatically generated and may contain inaccuracies. Please refer to the original book for 100% accuracy.</p>
+    </header>
+
+    <label class="theme-toggle">
+        <span>&#9790;</span>
+        <span class="switch"><input type="checkbox" id="themeSwitch"><span class="slider"></span></span>
+        <span>&#9728;</span>
+    </label>
+
+    <nav class="toc" id="top">
+        <h2>Table of Contents</h2>
+        <div class="toc-grid">
+            <!-- TOC_PLACEHOLDER -->
+        </div>
+    </nav>
+
+    <!-- DETAILS_PLACEHOLDER -->
+
+</div>
+<script>
+    const themeSwitch = document.getElementById('themeSwitch');
+    if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.classList.add('light');
+        themeSwitch.checked = true;
+    }
+    themeSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            document.documentElement.classList.add('light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.remove('light');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
+</body>
+</html>

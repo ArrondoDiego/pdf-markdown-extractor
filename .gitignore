@@ -1,25 +1,15 @@
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
 
-# Virtual environments
+# Virtual Environments
 .venv/
 env/
 venv/
 
-# IDEs & Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Local input data
+# Local input & generated output
 book.pdf
+index.html
 
 # Generated chunks and summaries
 dir/files/*
